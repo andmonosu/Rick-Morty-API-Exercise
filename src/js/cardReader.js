@@ -7,10 +7,8 @@ const processChange = (name) =>{
         .then(data => createCards(data));
 };
 searchButton.addEventListener("click", ()=>{
-    if(content.hasChildNodes()){
-        while(content.hasChildNodes()){
-            content.removeChild(content.lastChild)
-        }
+    while(content.hasChildNodes()){
+        content.removeChild(content.lastChild)
     }
     processChange(searchInput.value)
 });
