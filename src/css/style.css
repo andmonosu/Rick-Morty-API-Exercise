@@ -14,7 +14,7 @@ main{
 
 .content{
     display: grid;
-    grid-template-columns: repeat(4, minmax(50px, 1fr));
+    grid-template-columns: repeat(3, minmax(50px, 1fr));
     grid-column-gap: 1rem;
     grid-row-gap: 1rem;
 }
