@@ -47,25 +47,35 @@ statusFilter.addEventListener('change', () => {processChange(searchInput.value,f
 const setPrevAndNextUri = (apiData)=>{
     prevUri = apiData.info['prev'];
     nextUri = apiData.info['next'];
-    const footer = document.getElementsByTagName('footer')[0];
-    while(footer.hasChildNodes()){
-        footer.removeChild(footer.lastChild);
+    const buttonContainer = document.getElementsByClassName('button-container')[0];
+    while(buttonContainer.hasChildNodes()){
+        buttonContainer.removeChild(buttonContainer.lastChild);
     }
     const nextButton = document.createElement('button');
     nextButton.textContent = 'Next Page';
     const prevButton = document.createElement('button');
     prevButton.textContent = 'Previous Page';
-    if(prevUri===null){
-        footer.appendChild(nextButton);
-        nextButton.addEventListener('click', () => {processChange(searchInput.value,false,true)});
-    }else if(nextUri===null){
-        prevButton.addEventListener('click', () => {processChange(searchInput.value,true,false)});
-        footer.appendChild(prevButton);
-    }else{
-        nextButton.addEventListener('click', () => {processChange(searchInput.value,false,true)});
-        prevButton.addEventListener('click', () => {processChange(searchInput.value,true,false)});
-        footer.appendChild(prevButton);
-        footer.appendChild(nextButton);
+    if(prevUri!==null||nextUri!==null) {
+        if (prevUri === null) {
+            buttonContainer.appendChild(nextButton);
+            nextButton.addEventListener('click', () => {
+                processChange(searchInput.value, false, true)
+            });
+        } else if (nextUri === null) {
+            prevButton.addEventListener('click', () => {
+                processChange(searchInput.value, true, false)
+            });
+            buttonContainer.appendChild(prevButton);
+        } else {
+            nextButton.addEventListener('click', () => {
+                processChange(searchInput.value, false, true)
+            });
+            prevButton.addEventListener('click', () => {
+                processChange(searchInput.value, true, false)
+            });
+            buttonContainer.appendChild(prevButton);
+            buttonContainer.appendChild(nextButton);
+        }
     }
 }
 const createCards = (apiData) =>{
@@ -73,18 +83,36 @@ const createCards = (apiData) =>{
         content.removeChild(content.lastChild);
     }
     apiData['results'].forEach(data => {
+        const card = document.createElement('div');
+        card.setAttribute('class','card');
+        const cardImage = document.createElement('div');
+        cardImage.setAttribute('class','card-image');
         const image = document.createElement('img');
         image.setAttribute('src',data['image']);
-        content.appendChild(image);
-        const genderParagraph = document.createElement('p')
+        cardImage.appendChild(image);
+        card.appendChild(cardImage);
+        const cardGender = document.createElement('div');
+        cardGender.setAttribute('class','card-gender');
+        const genderParagraph = document.createElement('p');
         const gender = new String(data['gender']);
         genderParagraph.innerText = gender;
-        //content.appendChild(genderParagraph);
-
-        const speciesParagraph = document.createElement('p')
-        const species = new String(data['species']);
-        speciesParagraph.innerText = species;
-        //content.appendChild(speciesParagraph);
+        cardGender.appendChild(genderParagraph);
+        card.appendChild(cardGender);
+        const cardSpecie = document.createElement('div');
+        cardSpecie.setAttribute('class','card-specie');
+        const specieParagraph = document.createElement('p');
+        const specie = new String(data['species']);
+        specieParagraph.innerText = specie;
+        cardSpecie.appendChild(specieParagraph);
+        card.appendChild(cardSpecie);
+        const cardStatus = document.createElement('div');
+        cardStatus.setAttribute('class','card-status');
+        const status = new String(data['status']);
+        const statusParagraph = document.createElement('p');
+        statusParagraph.innerText = status;
+        cardStatus.appendChild(statusParagraph);
+        card.appendChild(cardStatus);
+        content.appendChild(card);
     });
 }
 
