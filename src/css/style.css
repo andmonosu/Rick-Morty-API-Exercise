@@ -74,9 +74,9 @@ main {
   padding-right: 0.5rem;
 }
 
-.filter-item {
-  display: grid;
-  grid-template-columns: 1fr auto;
+.filter {
+  font-family: monospace;
+  margin-top: 1rem;
 }
 
 .search__bar {
@@ -88,7 +88,7 @@ main {
 }
 
 .search__input {
-  font-family: inherit;
+  font-family: monospace;
   font-size: inherit;
   background-color: #f4f2f2;
   border: none;
@@ -124,6 +124,7 @@ main {
   margin: 0.5rem;
   height: auto;
   width: 100%;
+  font-family: monospace;
 }
 
 .card {
@@ -157,6 +158,12 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-status p {
+  font-family: monospace;
 }
 
 .card-specie {
@@ -164,11 +171,15 @@ main {
   border-width: 0.5rem;
   border-color: black;
   border-style: solid;
-  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
 }
 .card-specie p {
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
+  font-family: monospace;
 }
 
 .card-gender {
@@ -176,21 +187,24 @@ main {
   border-width: 0.5rem;
   border-color: black;
   border-style: solid;
-  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
 }
 .card-gender p {
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
+  font-family: monospace;
 }
 
 .filter {
   position: relative;
   display: block;
-  max-width: 90%;
-  min-width: 90%;
+  width: 90%;
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 700px) {
   main {
     grid-template-columns: 30% 70%;
   }

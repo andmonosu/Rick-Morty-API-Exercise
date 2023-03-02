@@ -95,14 +95,14 @@ const createCards = (apiData) =>{
         cardGender.setAttribute('class','card-gender');
         const genderParagraph = document.createElement('p');
         const gender = new String(data['gender']);
-        genderParagraph.innerText = gender;
+        genderParagraph.innerText = 'Gender: ' + gender;
         cardGender.appendChild(genderParagraph);
         card.appendChild(cardGender);
         const cardSpecie = document.createElement('div');
         cardSpecie.setAttribute('class','card-specie');
         const specieParagraph = document.createElement('p');
         const specie = new String(data['species']);
-        specieParagraph.innerText = specie;
+        specieParagraph.innerText = 'Specie: '+ specie;
         cardSpecie.appendChild(specieParagraph);
         card.appendChild(cardSpecie);
         const cardStatus = document.createElement('div');

@@ -3,7 +3,7 @@ html{
   background-repeat: repeat-y;
   background-size: cover;
 }
-
+$font:monospace;
 $header-color:darkblue;
 
 header{
@@ -81,10 +81,9 @@ main{
   padding-right: 0.5rem;
 }
 
-
-.filter-item{
-  display: grid;
-  grid-template-columns: 1fr auto;
+.filter{
+  font-family: $font;
+  margin-top: 1rem;
 }
 
 .search__bar{
@@ -96,7 +95,7 @@ main{
 }
 
 .search__input {
-  font-family: inherit;
+  font-family: $font;
   font-size: inherit;
   background-color: #f4f2f2;
   border: none;
@@ -132,6 +131,7 @@ main{
   margin:0.5rem;
   height: auto;
   width: 100%;
+  font-family: $font;
 }
 
 .card {
@@ -142,7 +142,7 @@ main{
     "c-image c-image"
     "gender status"
     "specie status"
-;
+  ;
   background-color: grey;
   border-width:0.5rem;
   border-color: black;
@@ -165,6 +165,9 @@ main{
   border-width:0.5rem;
   border-color: black;
   border-style: solid;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-status{
@@ -173,33 +176,37 @@ main{
   display: flex;
   align-items: center;
   justify-content: center;
+  p{
+    font-family: $font;
+  }
 }
 
 .card-specie{
   grid-area: specie;
   @include card-text;
-  height: fit-content;
+  height: auto;
   p{
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
+    font-family: $font;
   }
 }
 
 .card-gender{
   grid-area:gender;
   @include card-text;
-  height: fit-content;
+  height: auto;
   p{
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
+    font-family: $font;
   }
 }
 
 .filter{
   position: relative;
   display:block;
-  max-width: 90%;
-  min-width: 90%;
+  width: 90%;
 }
 
 @mixin restructure-columns($columns){
@@ -208,7 +215,7 @@ main{
   }
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 700px) {
   main{
     grid-template-columns: 30% 70%;
   }
